@@ -1,14 +1,9 @@
-# Use an official Ubuntu as a base image
-FROM ubuntu:latest
+FROM ubuntu:20.04
 
-# Install dependencies
+# Update packages and install curl
 RUN apt-get update && \
-    apt-get install -y openjdk-11-jdk
+    apt-get install -y curl
 
-
-# Create a directory for Jenkins agent
-RUN mkdir /home/jenkins
-
-WORKDIR /home/jenkins
-
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+# Install Node.js
+RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - && \
+    apt-get install -y nodejs
