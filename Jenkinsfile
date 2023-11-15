@@ -1,6 +1,7 @@
 pipeline {
-  agent { dockerfile true } // Use Dockerfile as the agent for the pipeline
-
+  agent { 
+    docker {
+        image 'jenkins-jdk'
   stages {
     stage('Test') {
       steps {
